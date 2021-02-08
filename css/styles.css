@@ -122,8 +122,6 @@ body {
 
 .attribution {
   position: absolute;
-  bottom: 2%;
-  display: block;
   width: 100%;
   text-align: center;
 }
@@ -157,7 +155,7 @@ body {
     display: -ms-grid;
     display: grid;
         grid-template-areas: "bannerText rates" "mission rates" "reviewsContainer reviewsContainer";
-    padding: 5% 10%;
+    padding: 4% 10%;
   }
   .bannerText {
     -ms-grid-row: 1;
