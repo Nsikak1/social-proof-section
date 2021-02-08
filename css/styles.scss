@@ -55,6 +55,7 @@ body {
   flex-flow: column nowrap;
   row-gap: 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .reviews {
   background-color: $review-background;
@@ -88,10 +89,9 @@ body {
 }
 
 .attribution {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: 2%;
   display: block;
-  margin-top: 1rem;
   width: 100%;
   text-align: center;
 }
