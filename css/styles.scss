@@ -5,6 +5,7 @@ $rated-background: hsl(300, 24%, 96%);
 $banner-color: hsl(303, 10%, 53%);
 $verified-text: hsl(333, 80%, 67%);
 $mobile-breakpoint: 375px;
+$desktop-breakpoint: 1440px;
 * {
   box-sizing: border-box;
   padding: 0;
@@ -28,16 +29,16 @@ body {
 .rates {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   &__rated {
     display: flex;
     background-color: $rated-background;
     width: 90%;
-    margin: 0.5rem auto;
     padding: 0.6rem 0;
+    margin: 0.5rem 0;
     border-radius: 0.5rem;
     justify-content: center;
     align-items: center;
-    max-width: 40rem;
   }
   &__rated::before {
     content: "";
@@ -49,9 +50,14 @@ body {
   }
 }
 
+.reviewsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 1rem;
+  margin-top: 1rem;
+}
 .reviews {
   background-color: $review-background;
-  margin-bottom: 1rem;
   color: $review-text;
   display: grid;
   grid-template-areas:
@@ -85,11 +91,12 @@ body {
   position: relative;
   bottom: 0;
   display: block;
+  margin-top: 1rem;
   width: 100%;
   text-align: center;
 }
 
-@media screen and (min-width: 1px) {
+@media screen and (max-width: 800px) {
   .container {
     padding: 1rem;
   }
@@ -108,6 +115,58 @@ body {
     &__rated {
       flex-flow: column nowrap;
       row-gap: 0.5rem;
+    }
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container {
+    display: grid;
+    grid-template-areas:
+      "bannerText rates"
+      "mission rates"
+      "reviewsContainer reviewsContainer";
+    padding: 5% 10%;
+  }
+  .bannerText {
+    grid-area: bannerText;
+    width: 70%;
+  }
+  .mission {
+    grid-area: mission;
+    width: 70%;
+  }
+  .rates {
+    grid-area: rates;
+    align-items: flex-start;
+    &__rated {
+      display: flex;
+      max-width: 70%;
+      padding: 1rem;
+      &:nth-child(2) {
+        align-self: center;
+      }
+      &:last-of-type {
+        align-self: flex-end;
+      }
+      &::before {
+        margin-right: 2rem;
+      }
+    }
+  }
+  .reviewsContainer {
+    grid-area: reviewsContainer;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    min-height: 100%;
+  }
+  .reviews {
+    max-width: 30%;
+    max-height: 90%;
+    &:nth-child(2) {
+      align-self: center;
+    }
+    &:last-of-type {
+      align-self: flex-end;
     }
   }
 }
