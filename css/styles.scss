@@ -1,3 +1,10 @@
+$text-color: hsl(300, 43%, 22%);
+$review-background: hsl(300, 43%, 22%);
+$review-text: hsl(0, 0%, 100%);
+$rated-background: hsl(300, 24%, 96%);
+$banner-color: hsl(303, 10%, 53%);
+$verified-text: hsl(333, 80%, 67%);
+$mobile-breakpoint: 375px;
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,4 +12,102 @@
 }
 html {
   font-size: 16px;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  color: $text-color;
+  font-size: calc(1rem - 1px);
+}
+.container {
+  display: grid;
+}
+.mission {
+  color: $banner-color;
+}
+.rates {
+  display: flex;
+  flex-flow: column nowrap;
+  &__rated {
+    display: flex;
+    background-color: $rated-background;
+    width: 90%;
+    margin: 0.5rem auto;
+    padding: 0.6rem 0;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 40rem;
+  }
+  &__rated::before {
+    content: "";
+    display: block;
+    width: 100px; //fixed width desired
+    height: 1rem;
+    background-image: url("../images/icon-star.svg");
+    background-repeat: space no-repeat;
+  }
+}
+
+.reviews {
+  background-color: $review-background;
+  margin-bottom: 1rem;
+  color: $review-text;
+  display: grid;
+  grid-template-areas:
+    "picture name"
+    "picture verified"
+    "review review";
+  grid-template-columns: auto 1fr;
+  padding: 2.5rem 1.5rem;
+  border-radius: 0.5rem;
+
+  &__picture {
+    border-radius: 50%;
+    grid-area: picture;
+    margin-right: 2rem;
+    width: 3rem;
+  }
+  &__name {
+    grid-area: name;
+  }
+  &__verified {
+    grid-area: verified;
+    color: $verified-text;
+  }
+  &__review {
+    grid-area: review;
+    margin-top: 1rem;
+  }
+}
+
+.attribution {
+  position: relative;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 1px) {
+  .container {
+    padding: 1rem;
+  }
+  .bannerText {
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .mission {
+    text-align: center;
+  }
+  .rates {
+    margin-bottom: 2rem;
+  }
+  .rates {
+    &__rated {
+      flex-flow: column nowrap;
+      row-gap: 0.5rem;
+    }
+  }
 }
